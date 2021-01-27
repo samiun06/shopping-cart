@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="minus1" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="value1" type="text" class="form-control text-center" value="1">
-                           <button id="plus1" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="phone-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="phone-amount" type="text" class="form-control text-center" value="1">
+                           <button id="phone-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$ <span id="price1">1219</span></h5>
+                        <h5>$<span id="phone-price">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,9 +43,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="minus2" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="value2" type="text" class="form-control text-center" value="1">
-                           <button id="plus2" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="case-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="case-amount" type="text" class="form-control text-center" value="1">
+                           <button id="case-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
                         <h5>$ <span id="price2">59</span></h5>
@@ -78,7 +78,52 @@
       </div>
    </section>
 
-   
+   <script>
+      //Increasing phone amount.
+      const phoneIncrease = document.getElementById("phone-increase");
+      phoneIncrease.addEventListener("click", function () {
+         increaseAmount("phone-amount");
+      })
+
+      //Increasing phone price.
+      
+
+
+      //Decreasing phone amount.
+      const phoneDecrease = document.getElementById("phone-decrease");
+      phoneDecrease.addEventListener("click", function () {
+         decreaseAmount("phone-amount");
+      })
+
+      //Increasing case amount
+      const caseIncrease = document.getElementById("case-increase");
+      caseIncrease.addEventListener("click", function () {
+         increaseAmount("case-amount");
+      })
+
+      //Decreasing case amount
+      const caseDecrease = document.getElementById("case-decrease");
+      caseDecrease.addEventListener("click", function () {
+         decreaseAmount("case-amount");
+      })
+
+      function increaseAmount(amount) {
+         const Amount = document.getElementById(amount);
+         const amountNumber = parseFloat(Amount.value);
+         const newAmount = amountNumber + 1;
+         Amount.value = newAmount;
+      }
+
+      function decreaseAmount(amount) {
+            const Amount = document.getElementById(amount);
+            const amountNumber = parseInt(Amount.value);
+            const newAmount = amountNumber - 1;
+            if(newAmount >= 0){
+            Amount.value = newAmount;
+         }
+      }
+   </script>
+
 </body>
 
 </html>
