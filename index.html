@@ -48,7 +48,7 @@
                            <button id="case-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$ <span id="price2">59</span></h5>
+                        <h5>$<span id="case-price">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -79,32 +79,46 @@
    </section>
 
    <script>
-      //Increasing phone amount.
+      //Decreasing phone amount.
       const phoneIncrease = document.getElementById("phone-increase");
       phoneIncrease.addEventListener("click", function () {
+         //Decreasing phone amount.
          increaseAmount("phone-amount");
+
+         //Increasing phone price
+         phonePrice();
       })
 
-      //Increasing phone price.
+
       
-
-
-      //Decreasing phone amount.
       const phoneDecrease = document.getElementById("phone-decrease");
       phoneDecrease.addEventListener("click", function () {
+         //Decreasing phone amount.
          decreaseAmount("phone-amount");
+
+         //Decreasing phone price
+         phonePrice();
       })
 
-      //Increasing case amount
+      
       const caseIncrease = document.getElementById("case-increase");
       caseIncrease.addEventListener("click", function () {
+         //Increasing case amount
          increaseAmount("case-amount");
+
+         //Increasing case price
+         casePrice();
+
       })
 
-      //Decreasing case amount
+      
       const caseDecrease = document.getElementById("case-decrease");
       caseDecrease.addEventListener("click", function () {
+         //Decreasing case amount
          decreaseAmount("case-amount");
+
+         //Decreasing case price
+         casePrice();
       })
 
       function increaseAmount(amount) {
@@ -121,6 +135,21 @@
             if(newAmount >= 0){
             Amount.value = newAmount;
          }
+      }
+
+      function phonePrice(){
+         const phonePrice = document.getElementById("phone-price");
+         const phoneAmount = document.getElementById("phone-amount");
+         const phoneAmountNumber = parseInt(phoneAmount.value);
+         const phoneNewPrice = 1219 * phoneAmountNumber;
+         phonePrice.innerText = phoneNewPrice;
+      }
+      function casePrice(){
+         const casePrice = document.getElementById("case-price");
+         const caseAmount = document.getElementById("case-amount");
+         const caseAmountNumber = parseInt(caseAmount.value);
+         const caseNewPrice = 59 * caseAmountNumber;
+         casePrice.innerText = caseNewPrice;
       }
    </script>
 
