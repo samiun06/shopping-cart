@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="value" type="text" class="form-control text-center" value="1">
-                           <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="minus1" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="value1" type="text" class="form-control text-center" value="1">
+                           <button id="plus1" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$ <span id="price1">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input  type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="minus2" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="value2" type="text" class="form-control text-center" value="1">
+                           <button id="plus2" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id="price2">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,8 +64,8 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
-                        <h5>$0</h5>
+                        <h5>$ <span id="subtotal">1278</span></h5>
+                        <h5>$ <span id="tax">0</span></h5>
                         <h5>$1,278</h5>
                      </div>
                   </div>
@@ -78,14 +78,7 @@
       </div>
    </section>
 
-   <script>
-      const phoneIncrease = document.getElementById("plus");
-      const plus = phoneIncrease.addEventListener("click", function(){
-         const increaseValue = document.getElementById("value").value;
-         const increaseValueNumber = parseInt(increaseValue);
-         document.getElementById("value").value = increaseValueNumber + 1;
-      })
-   </script>
+   
 </body>
 
 </html>
