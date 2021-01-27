@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$ <span id="subtotal">1278</span></h5>
-                        <h5>$ <span id="tax">0</span></h5>
-                        <h5>$1,278</h5>
+                        <h5>$<span id="subtotal">1,278</span></h5>
+                        <h5>$<span id="tax">0</span></h5>
+                        <h5>$<span id="grand-total">1,278</span></h5>
                      </div>
                   </div>
                </div>
@@ -79,39 +79,71 @@
    </section>
 
    <script>
-      //Decreasing phone amount.
       const phoneIncrease = document.getElementById("phone-increase");
       phoneIncrease.addEventListener("click", function () {
-         //Decreasing phone amount.
+         //Icreasing phone amount.
          increaseAmount("phone-amount");
+
+
 
          //Increasing phone price
          phonePrice();
+
+         //Increasing subtotal according to phone price.
+         subtotal();
+
+         //Increasing total tax according to phone price.
+         totalTax();
+
+         //Increasing grand total according to phone price.
+         grandTotal();
+
+
       })
 
 
-      
+
       const phoneDecrease = document.getElementById("phone-decrease");
       phoneDecrease.addEventListener("click", function () {
+
          //Decreasing phone amount.
          decreaseAmount("phone-amount");
 
          //Decreasing phone price
          phonePrice();
+
+         //Decreasing subtotal according to phone price.
+         subtotal();
+
+         //Decreasing total tax according to phone price.
+         totalTax();
+
+         //Decreasing grand total according to phone price.
+         grandTotal();
       })
 
-      
+
       const caseIncrease = document.getElementById("case-increase");
       caseIncrease.addEventListener("click", function () {
+
          //Increasing case amount
          increaseAmount("case-amount");
 
          //Increasing case price
          casePrice();
 
+         //Increasing subtotal according to case price.
+         subtotal();
+
+         //Increasing total tax according to case price.
+         totalTax();
+
+         //Increasing grand total according to case price.
+         grandTotal();
+
       })
 
-      
+
       const caseDecrease = document.getElementById("case-decrease");
       caseDecrease.addEventListener("click", function () {
          //Decreasing case amount
@@ -119,37 +151,86 @@
 
          //Decreasing case price
          casePrice();
+
+         //Decreasing subtotal according to case price.
+         subtotal();
+
+         //Decreasing total tax according to case price.
+         totalTax();
+
+         //Decreasing grand total according to case price.
+         grandTotal();
       })
+
 
       function increaseAmount(amount) {
          const Amount = document.getElementById(amount);
          const amountNumber = parseFloat(Amount.value);
          const newAmount = amountNumber + 1;
          Amount.value = newAmount;
+
       }
 
       function decreaseAmount(amount) {
-            const Amount = document.getElementById(amount);
-            const amountNumber = parseInt(Amount.value);
-            const newAmount = amountNumber - 1;
-            if(newAmount >= 0){
+         const Amount = document.getElementById(amount);
+         const amountNumber = parseInt(Amount.value);
+         const newAmount = amountNumber - 1;
+         if (newAmount >= 0) {
             Amount.value = newAmount;
          }
       }
 
-      function phonePrice(){
+      function phonePrice() {
          const phonePrice = document.getElementById("phone-price");
          const phoneAmount = document.getElementById("phone-amount");
          const phoneAmountNumber = parseInt(phoneAmount.value);
          const phoneNewPrice = 1219 * phoneAmountNumber;
-         phonePrice.innerText = phoneNewPrice;
+         return phonePrice.innerText = phoneNewPrice;
+
       }
-      function casePrice(){
+
+      function casePrice() {
          const casePrice = document.getElementById("case-price");
          const caseAmount = document.getElementById("case-amount");
          const caseAmountNumber = parseInt(caseAmount.value);
          const caseNewPrice = 59 * caseAmountNumber;
-         casePrice.innerText = caseNewPrice;
+         return casePrice.innerText = caseNewPrice;
+      }
+
+      function subtotal() {
+         const subtotal = document.getElementById("subtotal");
+         const subtotalNumber = parseInt(subtotal.innerText);
+         const newSubtotal = phonePrice() + casePrice();
+         return subtotal.innerText = newSubtotal;
+      }
+
+      function phoneTax() {
+         const phoneTax = document.getElementById("tax");
+         const phoneAmount = document.getElementById("phone-amount");
+         const phoneAmountNumber = parseInt(phoneAmount.value);
+         const newTax = 122 * phoneAmountNumber;
+         return newTax;
+      }
+
+      function caseTax() {
+         const caseAmount = document.getElementById("case-amount");
+         const caseAmountNumber = parseInt(caseAmount.value);
+         const newTax = 6 * caseAmountNumber;
+         return newTax;
+      }
+
+      function totalTax() {
+         const tax = document.getElementById("tax");
+         const taxNumber = parseInt(tax.innerText);
+         const newTotalTax = phoneTax() + caseTax();
+         return tax.innerText = newTotalTax;
+      }
+
+      function grandTotal() {
+         const grandTotal = document.getElementById("grand-total");
+         const grandTotalNumber = parseInt(grandTotal.innerText);
+         const newGrandTotal = subtotal() + totalTax();
+         grandTotal.innerText = newGrandTotal;
       }
    </script>
 
